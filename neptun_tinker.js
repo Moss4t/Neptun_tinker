@@ -3,6 +3,7 @@
 // @namespace      http://example.org
 // @description    Neptun, de jobb!
 // @version        0.0.1
+// @downloadURL    https://raw.githubusercontent.com/Moss4t/Neptun_tinker/master/neptun_tinker.js
 // @include        https://*neptun*/*hallgato*/*
 // @include        https://*neptun*/*oktato*/*
 // @include        https://*hallgato*.*neptun*/*
