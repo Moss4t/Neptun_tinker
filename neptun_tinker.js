@@ -71,7 +71,7 @@
                 sessionEndDate = null;
               });
               if($("#npuStatus").size() == 0) {
-                $("#upTraining_lblRemainingTime").html('<span id="npuStatus" style="font-weight: normal"><a href="https://github.com/solymosi/npu" target="_blank">Neptun PowerUp!</a> v' + GM.info.script.version + '</span>');
+                $("#upTraining_lblRemainingTime").html('<span id="npuStatus" style="font-weight: normal">Neptun Tinker </span>');
               }
             }, 1000);
           },
