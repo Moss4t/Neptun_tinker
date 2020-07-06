@@ -21,6 +21,7 @@
 // @grant          GM_info
 // @require        https://greasemonkey.github.io/gm4-polyfill/gm4-polyfill.js
 // @require        https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js
+// ==/UserScript==
 
 (function() {
     "use strict";
