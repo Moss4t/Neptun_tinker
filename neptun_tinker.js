@@ -26,22 +26,37 @@
 
 (function() {
     "use strict";
-  
+
     var nep = {
         init: async function() {
 
             var i;
             var max_num = document.getElementById("c_messages_gridMessages_ddlPageSize").value;
             for (i = 0; i < max_num; i++) {
-                const something = document.getElementsByClassName("link")[i];
-                if(something.innerHTML == "Kurzus órarendi változás"){
-                    console.log("Kurzus!");
-                    //DELETE MESSAGE HERE
-                    const id = something.parentElement.parentElement.id;
+
+                const element = document.getElementsByClassName("link")[i];
+
+                if(element.innerHTML == "Kurzus órarendi változás" || element.innerHTML.toUpperCase().includes("EMLÉKEZTETŐ") || element.innerHTML.toUpperCase().includes("ERASMUS")
+                   || element.innerHTML.toUpperCase().includes("SPORT") || element.innerHTML.toUpperCase().includes("ANGOL") || element.innerHTML.toUpperCase().includes("ÉRTESÍTÉS")){
+                    const id = element.parentElement.parentElement.id;
                     document.getElementById(id).style.display = 'none';
                 }
+                else if (element.innerHTML.includes("jegybeírás történt") || element.innerHTML.includes("vizsgajegy került beírásra")){
+                    const id = element.parentElement.parentElement.id;
+                    document.getElementById(id).classList.remove("Row1_Bold");
+                    document.getElementById(id).style.backgroundColor = "#00FF00";
+                    console.log("Jegy!");
+                }
+                else if (element.innerHTML.includes("Új vizsgakiírás")){
+                    const id = element.parentElement.parentElement.id;
+                    document.getElementById(id).classList.remove("Row1_Bold");
+                    document.getElementById(id).style.backgroundColor = "#1E90FF";
+                }
+                else if (element.innerHTML.toUpperCase().includes("ÖSZTÖNDÍJ")){
+                    const id = element.parentElement.parentElement.id;
+                    document.getElementById(id).style.backgroundColor = "#FFD700";
+                }
             }
-
             this.initKeepSession();
         },
 
@@ -76,7 +91,7 @@
               }
             }, 1000);
           },
-          
+
           runEval: function(source) {
             if ("function" == typeof source) {
               source = "(" + source + ")();"
