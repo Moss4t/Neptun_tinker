@@ -2,7 +2,7 @@
 // @name           Neptun Tinker
 // @namespace      http://example.org
 // @description    Neptun, de jobb!
-// @version        0.0.2
+// @version        0.0.3
 // @downloadURL    https://raw.githubusercontent.com/Moss4t/Neptun_tinker/master/neptun_tinker.js
 // @include        https://*neptun*/*hallgato*/*
 // @include        https://*neptun*/*oktato*/*
@@ -29,8 +29,15 @@
   
     var nep = {
         init: async function() {
-            console.log("Hi");
-            document.getElementById("lblUsername").textContent = "????"
+
+            var i;
+            var max_num = 20; //annyi kell hogy legyen, mint amennyit beállítunk listázásra. Ez alapméretezetten 20
+            for (i = 0; i < 20; i++) {
+                if(document.getElementsByClassName("link")[i].innerHTML == "Kurzus órarendi változás"){
+                    console.log("Kurzus!");
+                    //DELETE MESSAGE HERE
+                }
+            }
   
         }
     }
