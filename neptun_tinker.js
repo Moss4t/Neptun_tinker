@@ -58,7 +58,7 @@
             var keepAlive = function() {
               window.setTimeout(function() {
                 $.ajax({
-                  url: 'main.aspx*'
+                  url: "main.aspx"
                 });
                 keepAlive();
                 console.log("Keep me alive!");
@@ -90,6 +90,36 @@
             document.body.appendChild(script);
             document.body.removeChild(script);
             console.log("running eval...");
+          },
+
+          getChild: function(o, s) {
+            while(s.length) {
+              var n = s.shift();
+              if(!(o instanceof Object && n in o)) {
+                return;
+              }
+              o = o[n];
+            }
+            return o;
+          },
+    
+          setChild: function(o, s, v) {
+            while(s.length) {
+              var n = s.shift();
+              if(s.length == 0) {
+                if(v == null) {
+                  delete o[n];
+                }
+                else {
+                  o[n] = v;
+                }
+                return;
+              }
+              if(!(typeof o == "object" && n in o)) {
+                o[n] = new Object();
+              }
+              o = o[n];
+            }
           },
     }
     nep.init();
