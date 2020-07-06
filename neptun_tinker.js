@@ -41,15 +41,14 @@
                     document.getElementById(id).style.display = 'none';
                 }
             }
-            
-            this.initKeepSession();
 
-  
+            this.initKeepSession();
         },
 
         initKeepSession: function() {
             var cdt = $("#hfCountDownTime");
             var timeout = 120;
+            console.log("keeping Session!");
             if(cdt.size() > 0) {
               var cdto = parseInt(cdt.val());
               if(cdto > 60) {
@@ -59,9 +58,10 @@
             var keepAlive = function() {
               window.setTimeout(function() {
                 $.ajax({
-                  url: "main.aspx"
+                  url: 'main.aspx*'
                 });
                 keepAlive();
+                console.log("Keep me alive!");
               }, timeout * 1000 - 30000 - Math.floor(Math.random() * 30000));
             };
             keepAlive();
@@ -70,6 +70,7 @@
               nep.runEval(function() {
                 ShowModal = function() { };
                 clearTimeout(timerID);
+                console.log("Setting interval");
                 clearTimeout(timerID2);
                 sessionEndDate = null;
               });
@@ -88,6 +89,7 @@
             script.textContent = source;
             document.body.appendChild(script);
             document.body.removeChild(script);
+            console.log("running eval...");
           },
     }
     nep.init();
