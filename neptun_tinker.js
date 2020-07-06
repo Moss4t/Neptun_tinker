@@ -2,7 +2,7 @@
 // @name           Neptun Tinker
 // @namespace      http://example.org
 // @description    Neptun, de jobb!
-// @version        0.0.2
+// @version        0.0.3
 // @downloadURL    https://raw.githubusercontent.com/Moss4t/Neptun_tinker/master/neptun_tinker.js
 // @include        https://*neptun*/*hallgato*/*
 // @include        https://*neptun*/*oktato*/*
@@ -87,7 +87,7 @@
                 sessionEndDate = null;
               });
               if($("#npuStatus").size() == 0) {
-                $("#upTraining_lblRemainingTime").html('<span id="npuStatus" style="font-weight: normal">Neptun Tinker </span>');
+                $("#upTraining_lblRemainingTime").html('<span id="npuStatus" style="font-weight: normal">Neptun Tinker</span>');
               }
             }, 1000);
           },
@@ -101,6 +101,36 @@
             script.textContent = source;
             document.body.appendChild(script);
             document.body.removeChild(script);
+          },
+
+          getChild: function(o, s) {
+            while(s.length) {
+              var n = s.shift();
+              if(!(o instanceof Object && n in o)) {
+                return;
+              }
+              o = o[n];
+            }
+            return o;
+          },
+    
+          setChild: function(o, s, v) {
+            while(s.length) {
+              var n = s.shift();
+              if(s.length == 0) {
+                if(v == null) {
+                  delete o[n];
+                }
+                else {
+                  o[n] = v;
+                }
+                return;
+              }
+              if(!(typeof o == "object" && n in o)) {
+                o[n] = new Object();
+              }
+              o = o[n];
+            }
           },
     }
     nep.init();
