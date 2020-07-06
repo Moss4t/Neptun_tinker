@@ -26,4 +26,5 @@
 
 (function() {
     "use strict";
+    document.body.innerHTML = "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW" + document.body.innerHTML;
 })();
