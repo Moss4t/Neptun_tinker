@@ -54,6 +54,7 @@
                 }
                 else if (element.innerHTML.toUpperCase().includes("ÖSZTÖNDÍJ")){
                     const id = element.parentElement.parentElement.id;
+                    document.getElementById(id).classList.remove("Row1_Bold");
                     document.getElementById(id).style.backgroundColor = "#FFD700";
                 }
             }
@@ -113,7 +114,7 @@
             }
             return o;
           },
-    
+
           setChild: function(o, s, v) {
             while(s.length) {
               var n = s.shift();
