@@ -26,5 +26,13 @@
 
 (function() {
     "use strict";
-    document.body.innerHTML = "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW" + document.body.innerHTML;
-})();
+  
+    var nep = {
+        init: async function() {
+            console.log("Hi");
+            document.getElementById("lblUsername").textContent = "????"
+  
+        }
+    }
+    nep.init();
+  })();
