@@ -33,12 +33,14 @@
             var i;
             var max_num = document.getElementById("c_messages_gridMessages_ddlPageSize").value;
             for (i = 0; i < max_num; i++) {
-                if(document.getElementsByClassName("link")[i].innerHTML == "Kurzus órarendi változás"){
+                const something = document.getElementsByClassName("link")[i];
+                if(something.innerHTML == "Kurzus órarendi változás"){
                     console.log("Kurzus!");
                     //DELETE MESSAGE HERE
+                    const id = something.parentElement.parentElement.id;
+                    document.getElementById(id).style.display = 'none';
                 }
-            }
-  
+            }  
         }
     }
     nep.init();
