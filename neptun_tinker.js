@@ -40,8 +40,55 @@
                     const id = something.parentElement.parentElement.id;
                     document.getElementById(id).style.display = 'none';
                 }
-            }  
-        }
+            }
+            
+            this.initKeepSession();
+
+  
+        },
+
+        initKeepSession: function() {
+            var cdt = $("#hfCountDownTime");
+            var timeout = 120;
+            if(cdt.size() > 0) {
+              var cdto = parseInt(cdt.val());
+              if(cdto > 60) {
+                timeout = cdto;
+              }
+            }
+            var keepAlive = function() {
+              window.setTimeout(function() {
+                $.ajax({
+                  url: "main.aspx"
+                });
+                keepAlive();
+              }, timeout * 1000 - 30000 - Math.floor(Math.random() * 30000));
+            };
+            keepAlive();
+
+            window.setInterval(function() {
+              nep.runEval(function() {
+                ShowModal = function() { };
+                clearTimeout(timerID);
+                clearTimeout(timerID2);
+                sessionEndDate = null;
+              });
+              if($("#npuStatus").size() == 0) {
+                $("#upTraining_lblRemainingTime").html('<span id="npuStatus" style="font-weight: normal">Neptun Tinker </span>');
+              }
+            }, 1000);
+          },
+          
+          runEval: function(source) {
+            if ("function" == typeof source) {
+              source = "(" + source + ")();"
+            }
+            var script = document.createElement('script');
+            script.setAttribute("type", "application/javascript");
+            script.textContent = source;
+            document.body.appendChild(script);
+            document.body.removeChild(script);
+          },
     }
     nep.init();
   })();
