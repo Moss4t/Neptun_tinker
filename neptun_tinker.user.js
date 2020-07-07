@@ -2,7 +2,7 @@
 // @name           Neptun Tinker
 // @namespace      http://example.org
 // @description    Neptun, viszont a mi verziónk!
-// @version        0.1.2
+// @version        0.1.1
 // @downloadURL    https://raw.githubusercontent.com/Moss4t/Neptun_tinker/master/neptun_tinker.user.js
 // @updateURL      https://raw.githubusercontent.com/Moss4t/Neptun_tinker/master/neptun_tinker.user.js
 // @include        https://*neptun*/*hallgato*/*
@@ -78,8 +78,6 @@
           } else {
             document.getElementById(id).style.backgroundColor = "#40D043";
             document.getElementById(id).style.color = "white";
-            console.log(document.getElementById(id).children[6].children[0]);
-            // document.getElementById(id).children[6].children[0].classList.remove("link");
           }
         }
 
@@ -104,14 +102,9 @@
             document.getElementById(id).style.backgroundColor = "#6F9EFF";
           } else {
             document.getElementById(id).style.backgroundColor = "#3160F9";
-
-            console.log(document.getElementById(id).children[6].children[0]);
           }
         }
         //ÖSZTÖNDÍJ
-
-        // console.log(document.getElementById(id).children[6].children[0]);
-        // document.getElementById(id).children[6].children[0].classList.remove("link");
         else if (element.innerHTML.toUpperCase().includes("ÖSZTÖNDÍJ")) {
           const id = element.parentElement.parentElement.id;
           document.getElementById(id).classList.remove("Row1_Bold");
@@ -122,9 +115,22 @@
             document.getElementById(id).style.backgroundColor = "#FFED6B";
           } else {
             document.getElementById(id).style.backgroundColor = "#F9DD31";
-            console.log(document.getElementById(id).children[6].children[0]);
-            // document.getElementById(id).children[6].children[0].classList.remove("link");
           }
+        }
+          //ÜGYINTÉZŐ ÉLTAL TÖRTÉNT DELETE
+           else if (element.innerHTML.toUpperCase().includes("ÜGYINTÉZŐ")) {
+          const id = element.parentElement.parentElement.id;
+          document.getElementById(id).classList.remove("Row1_Bold");
+          document.getElementById(id).children[6].children[0].style.setProperty("color","white","important");
+          if (
+            document.getElementById(id).children[5].children[0].alt ==
+            "Elolvasott üzenet"
+          ) {
+            document.getElementById(id).style.backgroundColor = "#D82020";
+          } else {
+            document.getElementById(id).style.backgroundColor = "#FF0000";
+          }
+                document.getElementById(id).style.color = "white";
         }
       }
       var table = document.getElementById("c_messages_gridMessages_bodytable");
@@ -186,6 +192,8 @@
           document.getElementsByClassName("main_search")[0].style.display = "none";
           document.getElementsByClassName("FunctionHeaderLeftCorner")[0].style.display = "none";
           document.getElementsByClassName("caption")[0].style.display = "none";
+
+
       },
 
     courseCollison: function () {
@@ -195,13 +203,13 @@
       for (let k = 1; k <= 7; k++) {
         let tops = [];
         const day_column = week.cells[k].childNodes[0];
-        if (day_column.childNodes.length != 0) {
+        if (day_column.childNodes.length != 0)
           for (let index = 0; index < day_column.childNodes.length; index++) {
             if (tops.includes(day_column.childNodes[index].style.top)) {
               day_column.childNodes[index].style.backgroundColor = "red";
               day_column.childNodes[index].childNodes[2].style.backgroundColor =
                 "red";
-              for (let l = 0; l <= index; l++) {
+              for (let l = 0; k <= day_column.childNodes.length; k++) {
                 if (
                   day_column.childNodes[index].style.top ==
                   day_column.childNodes[l].style.top
@@ -214,8 +222,6 @@
             }
             tops.push(day_column.childNodes[index].style.top);
           }
-        }
-        console.log(tops)
       }
     },
 
