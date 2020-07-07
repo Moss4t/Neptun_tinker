@@ -30,7 +30,6 @@
 
   var nep = {
     init: async function () {
-
       // call function after timetable finished loading
       setTimeout(this.courseCollison, 2500);
 
@@ -38,9 +37,7 @@
       this.newMenus();
       this.hideHeader();
       //this.hideFilter();
-        this.changeLayout();
-
-
+      this.changeLayout();
 
       var i;
       var max_num = document.getElementById(
@@ -117,11 +114,17 @@
             document.getElementById(id).style.backgroundColor = "#F9DD31";
           }
         }
-          //ÜGYINTÉZŐ ÉLTAL TÖRTÉNT DELETE
-           else if (element.innerHTML.toUpperCase().includes("ÜGYINTÉZŐ")) {
+        //ÜGYINTÉZŐ ÉLTAL TÖRTÉNT DELETE
+        else if (element.innerHTML.toUpperCase().includes("ÜGYINTÉZŐ")) {
           const id = element.parentElement.parentElement.id;
           document.getElementById(id).classList.remove("Row1_Bold");
-          document.getElementById(id).children[6].children[0].style.setProperty("color","white","important");
+          document
+            .getElementById(id)
+            .children[6].children[0].style.setProperty(
+              "color",
+              "white",
+              "important"
+            );
           if (
             document.getElementById(id).children[5].children[0].alt ==
             "Elolvasott üzenet"
@@ -130,7 +133,7 @@
           } else {
             document.getElementById(id).style.backgroundColor = "#FF0000";
           }
-                document.getElementById(id).style.color = "white";
+          document.getElementById(id).style.color = "white";
         }
       }
       var table = document.getElementById("c_messages_gridMessages_bodytable");
@@ -171,30 +174,41 @@
       }
     },
 
-       changeLayout : function() {
-
-          document.getElementById("function_table_leftside").style.display="none";
-          document.getElementById("upFunctionCommandLineTop").style.display="none";
-          document.getElementById("upFunctionCommandLineTop").style.display="none";
-          document.getElementById("function_table_leftside").style.display="none";
-          document.getElementById("upMuveletek_label_Muveletek_Main").style.display="none";
-          document.getElementById("upFunctionCommandLineBottom_div_line_bottom").style.display="none";
-          document.getElementsByClassName("FunctionRightSide")[0].style.display="none";
-          document.getElementsByClassName("FunctionRightSide")[1].style.display="none";
-          document.getElementsByClassName("FunctionRightSide")[2].style.display="none";
-          document.getElementById("upFunctionCommand_lbtn_new").style.display="none";
-          document.getElementById("function_table_body").style.width = "70%";
-          document.getElementById("function_table_body").style.padding = 0;
-          document.getElementById("upBoxes_upCalendar").style.float = "right";
-          document.getElementById("lblTrainingName").innerHTML = null;
-          document.getElementById("SDAUpdatePanel1_lbtnChangeTraining").innerHTML = null;
-          document.getElementById("separator").innerHTML = null;
-          document.getElementsByClassName("main_search")[0].style.display = "none";
-          document.getElementsByClassName("FunctionHeaderLeftCorner")[0].style.display = "none";
-          document.getElementsByClassName("caption")[0].style.display = "none";
-
-
-      },
+    changeLayout: function () {
+      document.getElementById("function_table_leftside").style.display = "none";
+      document.getElementById("upFunctionCommandLineTop").style.display =
+        "none";
+      document.getElementById("upFunctionCommandLineTop").style.display =
+        "none";
+      document.getElementById("function_table_leftside").style.display = "none";
+      document.getElementById(
+        "upMuveletek_label_Muveletek_Main"
+      ).style.display = "none";
+      document.getElementById(
+        "upFunctionCommandLineBottom_div_line_bottom"
+      ).style.display = "none";
+      document.getElementsByClassName("FunctionRightSide")[0].style.display =
+        "none";
+      document.getElementsByClassName("FunctionRightSide")[1].style.display =
+        "none";
+      document.getElementsByClassName("FunctionRightSide")[2].style.display =
+        "none";
+      document.getElementById("upFunctionCommand_lbtn_new").style.display =
+        "none";
+      document.getElementById("function_table_body").style.width = "70%";
+      document.getElementById("function_table_body").style.padding = 0;
+      document.getElementById("upBoxes_upCalendar").style.float = "right";
+      document.getElementById("lblTrainingName").innerHTML = null;
+      document.getElementById(
+        "SDAUpdatePanel1_lbtnChangeTraining"
+      ).innerHTML = null;
+      document.getElementById("separator").innerHTML = null;
+      document.getElementsByClassName("main_search")[0].style.display = "none";
+      document.getElementsByClassName(
+        "FunctionHeaderLeftCorner"
+      )[0].style.display = "none";
+      document.getElementsByClassName("caption")[0].style.display = "none";
+    },
 
     courseCollison: function () {
       let table = document.getElementById("tgTable");
@@ -281,9 +295,11 @@
       $("#mb1_Targyak").before(orarend);
       $("#mb1_Tanulmanyok_Órarend").remove();
 
-            if(!$("#upChooser_chooser_kollab").hasClass("KollabChooserSelected")) {
-              $('<li aria-haspopup="true" tabindex="0" role="menuitem" class="menu-parent" id="mb1_Targyak" targeturl="main.aspx?ismenuclick=true&amp;ctrl=0303">Tárgy felvétel</li>').appendTo("#mb1");
-            }
+      if (!$("#upChooser_chooser_kollab").hasClass("KollabChooserSelected")) {
+        $(
+          '<li aria-haspopup="true" tabindex="0" role="menuitem" class="menu-parent" id="mb1_Targyak" targeturl="main.aspx?ismenuclick=true&amp;ctrl=0303">Tárgy felvétel</li>'
+        ).appendTo("#mb1");
+      }
 
       if (!$("#upChooser_chooser_kollab").hasClass("KollabChooserSelected")) {
         $(
