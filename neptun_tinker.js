@@ -4,6 +4,7 @@
 // @description    Neptun, viszont a mi verziónk!
 // @version        0.0.5
 // @downloadURL    https://raw.githubusercontent.com/Moss4t/Neptun_tinker/master/neptun_tinker.js
+// @updateURL      https://raw.githubusercontent.com/Moss4t/Neptun_tinker/master/neptun_tinker.js
 // @include        https://*neptun*/*hallgato*/*
 // @include        https://*neptun*/*oktato*/*
 // @include        https://*hallgato*.*neptun*/*
