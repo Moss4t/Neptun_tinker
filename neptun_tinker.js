@@ -2,7 +2,7 @@
 // @name           Neptun Tinker
 // @namespace      http://example.org
 // @description    Neptun, de jobb!
-// @version        0.0.3
+// @version        0.0.4
 // @downloadURL    https://raw.githubusercontent.com/Moss4t/Neptun_tinker/master/neptun_tinker.js
 // @include        https://*neptun*/*hallgato*/*
 // @include        https://*neptun*/*oktato*/*
@@ -67,19 +67,19 @@
                 let date = row.cells[7].textContent;
                 let str = date.split('.');
                 let str2 = str[3].split(':');
-                let newDate = new Date(str[0], str[1] - 1, str[2], str2[0], str2[1], str2[2])
-                let now = Date.now()
+                let newDate = new Date(str[0], str[1] - 1, str[2], str2[0], str2[1], str2[2]);
+                let now = Date.now();
                 let newText;
                 if (Math.floor((now - newDate) / (1000*60*60)) < 1) {
-                  newText = Math.floor(Math.floor(now - newDate) / (1000*60)) + " perce küldve"
+                  newText = Math.floor(Math.floor(now - newDate) / (1000*60)) + " perce küldve";
                 }
                 else if (Math.floor((now - newDate) / (1000*60*60*24)) < 1){
-                  newText = Math.floor(Math.floor(now - newDate) / (1000*60*60)) + " órája küldve"
+                  newText = Math.floor(Math.floor(now - newDate) / (1000*60*60)) + " órája küldve";
                 }
                 else if (Math.floor((now - newDate) / (1000*60*60*24)) < 365) {
-                  newText = Math.floor(Math.floor(now - newDate) / (1000*60*60*24)) + " napja küldve"
+                  newText = Math.floor(Math.floor(now - newDate) / (1000*60*60*24)) + " napja küldve";
                 } else {
-                  newText = Math.floor(Math.floor(now - newDate) / (1000*60*60*24*365)) + " éve küldve" 
+                  newText = Math.floor(Math.floor(now - newDate) / (1000*60*60*24*365)) + " éve küldve";
                 }
                 if (newText != null) {
                   row.cells[7].textContent = newText;
