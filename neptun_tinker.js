@@ -60,6 +60,33 @@
                     document.getElementById(id).style.backgroundColor = "#FFD700";
                 }
             }
+
+            var table = document.getElementById("c_messages_gridMessages_bodytable");
+            var cell = table.getElementsByClassName("scrollablebody");
+            for (var j = 1, row; row = table.rows[j]; j++) {
+                let date = row.cells[7].textContent;
+                let str = date.split('.');
+                let str2 = str[3].split(':');
+                let newDate = new Date(str[0], str[1] - 1, str[2], str2[0], str2[1], str2[2])
+                let now = Date.now()
+                let newText;
+                if (Math.floor((now - newDate) / (1000*60*60)) < 1) {
+                  newText = Math.floor(Math.floor(now - newDate) / (1000*60)) + " perce küldve"
+                }
+                else if (Math.floor((now - newDate) / (1000*60*60*24)) < 1){
+                  newText = Math.floor(Math.floor(now - newDate) / (1000*60*60)) + " órája küldve"
+                }
+                else if (Math.floor((now - newDate) / (1000*60*60*24)) < 365) {
+                  newText = Math.floor(Math.floor(now - newDate) / (1000*60*60*24)) + " napja küldve"
+                } else {
+                  newText = Math.floor(Math.floor(now - newDate) / (1000*60*60*24*365)) + " éve küldve" 
+                }
+                if (newText != null) {
+                  row.cells[7].textContent = newText;
+                }
+            }
+
+            
             this.initKeepSession();
             this.newMenus();
             this.hideHeader();
