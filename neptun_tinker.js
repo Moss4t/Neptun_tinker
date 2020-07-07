@@ -73,15 +73,15 @@
                 let now = Date.now();
                 let newText;
                 if (Math.floor((now - newDate) / (1000*60*60)) < 1) {
-                  newText = Math.floor(Math.floor(now - newDate) / (1000*60)) + " perce küldve";
+                  newText = Math.floor(Math.floor(now - newDate) / (1000*60)) + " perce";
                 }
                 else if (Math.floor((now - newDate) / (1000*60*60*24)) < 1){
-                  newText = Math.floor(Math.floor(now - newDate) / (1000*60*60)) + " órája küldve";
+                  newText = Math.floor(Math.floor(now - newDate) / (1000*60*60)) + " órája";
                 }
                 else if (Math.floor((now - newDate) / (1000*60*60*24)) < 365) {
-                  newText = Math.floor(Math.floor(now - newDate) / (1000*60*60*24)) + " napja küldve";
+                  newText = Math.floor(Math.floor(now - newDate) / (1000*60*60*24)) + " napja";
                 } else {
-                  newText = Math.floor(Math.floor(now - newDate) / (1000*60*60*24*365)) + " éve küldve";
+                  newText = Math.floor(Math.floor(now - newDate) / (1000*60*60*24*365)) + " éve";
                 }
                 if (newText != null) {
                   row.cells[7].textContent = newText;
