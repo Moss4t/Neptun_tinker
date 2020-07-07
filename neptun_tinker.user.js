@@ -2,7 +2,7 @@
 // @name           Neptun Tinker
 // @namespace      http://example.org
 // @description    Neptun, viszont a mi verziónk!
-// @version        0.0.9
+// @version        0.1.0
 // @downloadURL    https://raw.githubusercontent.com/Moss4t/Neptun_tinker/master/neptun_tinker.user.js
 // @updateURL      https://raw.githubusercontent.com/Moss4t/Neptun_tinker/master/neptun_tinker.user.js
 // @include        https://*neptun*/*hallgato*/*
@@ -34,7 +34,6 @@
       this.initKeepSession();
       this.newMenus();
       this.hideHeader();
-
       setTimeout(this.courseCollison, 3000);
 
       var i;
@@ -97,7 +96,7 @@
                         document.getElementById(id).style.backgroundColor = "#FFED6B";
                     }else{
 
-                        document.getElementById(id).style.backgroundColor = "#3160F9";
+                        document.getElementById(id).style.backgroundColor = "#F9DD31";
                         console.log(document.getElementById(id).children[6].children[0]);
                        // document.getElementById(id).children[6].children[0].classList.remove("link");
 
@@ -153,10 +152,6 @@
         }          
       },
 
-        isPage: function(ctrl) {
-          return (window.location.href.indexOf("ctrl=" + ctrl) != -1);
-        },
-
         initKeepSession: function() {
             var cdt = $("#hfCountDownTime");
             var timeout = 120;
@@ -195,6 +190,7 @@
             $("#form1 > fieldset").css("border", "0 none");
             $("#span_changeproject").parent().hide();
           },
+
 
 
           initParameters: function() {
