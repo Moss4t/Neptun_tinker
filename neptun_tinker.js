@@ -181,7 +181,7 @@
                   e.attr("data-listing", "1").val("500");
                   var onChange = this.getAttributeNode("onchange");
                   if(onChange) {
-                    npu.runEval(onChange.value);
+                    nep.runEval(onChange.value);
                   }
                 }
               });
