@@ -2,7 +2,7 @@
 // @name           Neptun Tinker
 // @namespace      http://example.org
 // @description    Neptun, viszont a mi verziónk!
-// @version        0.0.8
+// @version        0.0.9
 // @downloadURL    https://raw.githubusercontent.com/Moss4t/Neptun_tinker/master/neptun_tinker.user.js
 // @updateURL      https://raw.githubusercontent.com/Moss4t/Neptun_tinker/master/neptun_tinker.user.js
 // @include        https://*neptun*/*hallgato*/*
@@ -34,7 +34,7 @@
       this.initKeepSession();
       this.newMenus();
       this.hideHeader();
-      this.hideFilter();
+
       setTimeout(this.courseCollison, 3000);
 
       var i;
@@ -196,13 +196,6 @@
             $("#span_changeproject").parent().hide();
           },
 
-
-          hideFilter: function() {
-            $("#function_tableheader, #upFilter").hide();
-            $("table.top_menu_wrapper").css("margin-top", "5px").css("margin-bottom", "8px");
-            $("#form1 > fieldset").css("border", "0 none");
-            $("#span_changeproject").parent().hide();
-          },
 
           initParameters: function() {
             nep.user = nep.getUser();
