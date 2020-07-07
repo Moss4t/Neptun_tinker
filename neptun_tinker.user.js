@@ -34,7 +34,10 @@
       this.initKeepSession();
       this.newMenus();
       this.hideHeader();
-      setTimeout(this.courseCollison, 3000);
+      this.hideFilter();
+      
+      // call function after timetable finished loading
+      setTimeout(this.courseCollison, 2500);
 
       var i;
       var max_num = document.getElementById("c_messages_gridMessages_ddlPageSize").value;
@@ -135,19 +138,20 @@
         console.log(week.cells)
         for (let k = 1; k <= 7; k++) {
           let tops = []
-          if (week.cells[k].childNodes[0].childNodes.length != 0)
-            for (let index = 0; index < week.cells[k].childNodes[0].childNodes.length; index++) {
-              if (tops.includes(week.cells[k].childNodes[0].childNodes[index].style.top)) {
-                week.cells[k].childNodes[0].childNodes[index].style.backgroundColor = "red";
-                week.cells[k].childNodes[0].childNodes[index].childNodes[2].style.backgroundColor = "red";
+          const day_column = week.cells[k].childNodes[0]
+          if (day_column.childNodes.length != 0)
+            for (let index = 0; index < day_column.childNodes.length; index++) {
+              if (tops.includes(day_column.childNodes[index].style.top)) {
+                day_column.childNodes[index].style.backgroundColor = "red";
+                day_column.childNodes[index].childNodes[2].style.backgroundColor = "red";
                 for (let l = 0; k <= index; k++) {
-                  if (week.cells[k].childNodes[0].childNodes[index].style.top == week.cells[k].childNodes[0].childNodes[l].style.top) {
-                    week.cells[k].childNodes[0].childNodes[l].style.backgroundColor = "red";
-                    week.cells[k].childNodes[0].childNodes[l].childNodes[2].style.backgroundColor = "red";
+                  if (day_column.childNodes[index].style.top == day_column.childNodes[l].style.top) {
+                    day_column.childNodes[l].style.backgroundColor = "red";
+                    day_column.childNodes[l].childNodes[2].style.backgroundColor = "red";
                   }
                 }
               }
-              tops.push(week.cells[k].childNodes[0].childNodes[index].style.top)
+              tops.push(day_column.childNodes[index].style.top)
             }
         }          
       },
