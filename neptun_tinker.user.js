@@ -35,6 +35,7 @@
       this.newMenus();
       this.hideHeader();
       this.hideFilter();
+      setTimeout(this.courseCollison, 3000);
 
       var i;
       var max_num = document.getElementById("c_messages_gridMessages_ddlPageSize").value;
@@ -127,8 +128,24 @@
                   row.cells[7].textContent = newText;
                 }
               }
-            
-        },
+          },
+      
+      courseCollison: function() {
+        let table = document.getElementById('tgTable')
+        let week = table.rows[0]
+        console.log(week.cells)
+        for (let k = 1; k <= 7; k++) {
+          let tops = []
+          if (week.cells[k].childNodes[0].childNodes.length != 0)
+            for (let index = 0; index < week.cells[k].childNodes[0].childNodes.length; index++) {
+              if (tops.includes(week.cells[k].childNodes[0].childNodes[index].style.top)) {
+                week.cells[k].childNodes[0].childNodes[index].style.backgroundColor = "red";
+                week.cells[k].childNodes[0].childNodes[index].childNodes[2].style.backgroundColor = "red";
+              }
+              tops.push(week.cells[k].childNodes[0].childNodes[index].style.top)
+            }
+        }          
+      },
 
         isPage: function(ctrl) {
           return (window.location.href.indexOf("ctrl=" + ctrl) != -1);
