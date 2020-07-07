@@ -2,7 +2,7 @@
 // @name           Neptun Tinker
 // @namespace      http://example.org
 // @description    Neptun, viszont a mi verziónk!
-// @version        0.1.0
+// @version        0.1.1
 // @downloadURL    https://raw.githubusercontent.com/Moss4t/Neptun_tinker/master/neptun_tinker.user.js
 // @updateURL      https://raw.githubusercontent.com/Moss4t/Neptun_tinker/master/neptun_tinker.user.js
 // @include        https://*neptun*/*hallgato*/*
@@ -249,6 +249,10 @@
       $("#mb1_Targyak").before(orarend);
       $("#mb1_Tanulmanyok_Órarend").remove();
 
+            if(!$("#upChooser_chooser_kollab").hasClass("KollabChooserSelected")) {
+              $('<li aria-haspopup="true" tabindex="0" role="menuitem" class="menu-parent" id="mb1_Targyak" targeturl="main.aspx?ismenuclick=true&amp;ctrl=0303">Tárgy felvétel</li>').appendTo("#mb1");
+            }
+      
       if (!$("#upChooser_chooser_kollab").hasClass("KollabChooserSelected")) {
         $(
           '<li aria-haspopup="false" tabindex="0" role="menuitem" class="menu-parent has-target" id="mb1_MeetStreet" targeturl="javascript:__doPostBack(\'upChooser$btnKollab\',\'\')">Meet Street</li>'
