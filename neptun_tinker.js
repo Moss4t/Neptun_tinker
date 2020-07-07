@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name           Neptun Tinker
 // @namespace      http://example.org
-// @description    Neptun, de jobb!
-// @version        0.0.4
+// @description    Neptun, viszont a mi verziónk!
+// @version        0.0.5
 // @downloadURL    https://raw.githubusercontent.com/Moss4t/Neptun_tinker/master/neptun_tinker.js
 // @include        https://*neptun*/*hallgato*/*
 // @include        https://*neptun*/*oktato*/*
@@ -232,7 +232,29 @@
               o = o[n];
             }
           },
-    }
     
+    fixOfficialMessagePopup: function() {
+        var dismiss = function() {
+          $("[aria-describedby=upRequiredMessageReader_upmodal_RequiredMessageReader_divpopup] .ui-dialog-content").dialog("close");
+        };
+
+        window.setInterval(function() {
+          var messagePopup = $("#upRequiredMessageReader_upmodal_RequiredMessageReader_divpopup:visible").closest(".ui-dialog");
+          if(messagePopup.size() > 0 && $("#upFunction_c_messages_upMain_upGrid").size() === 0) {
+            nep.runEval(dismiss);
+          }
+          if(messagePopup.size() > 0 && messagePopup.is(":not([data-nep-enhanced])")) {
+            messagePopup.attr("data-nep-enhanced", "true");
+            $("input[commandname=Tovabb]", messagePopup).val("Elolvasom");
+            var dismissBtn = $('<input value="Most nem érdekel" class="nep_dismiss ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" type="button">');
+            dismissBtn.click(function() {
+              nep.runEval(dismiss);
+            });
+            $(".ui-dialog-footerbar > div", messagePopup).append(dismissBtn);
+          }
+        }, 200);
+      },
+    
+    } 
     nep.init();
   })();
