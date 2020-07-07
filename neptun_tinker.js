@@ -30,7 +30,10 @@
   var nep = {
     init: async function() {
 
-      //this.moreMessages();
+      this.initKeepSession();
+      this.newMenus();
+      this.hideHeader();
+      this.hideFilter();
 
       var i;
       var max_num = document.getElementById("c_messages_gridMessages_ddlPageSize").value;
@@ -107,13 +110,11 @@
                 if (newText != null) {
                   row.cells[7].textContent = newText;
                 }
-            }
+              }
+          },
 
-            this.initKeepSession();
-            this.newMenus();
-            this.hideHeader();
-            this.hideFilter();
-
+        isPage: function(ctrl) {
+          return (window.location.href.indexOf("ctrl=" + ctrl) != -1);
         },
 
         initKeepSession: function() {
@@ -161,6 +162,12 @@
             $("table.top_menu_wrapper").css("margin-top", "5px").css("margin-bottom", "8px");
             $("#form1 > fieldset").css("border", "0 none");
             $("#span_changeproject").parent().hide();
+          },
+
+          initParameters: function() {
+            nep.user = nep.getUser();
+            nep.domain = nep.getDomain();
+            nep.training = nep.getTraining();
           },
 
           newMenus: function(){
