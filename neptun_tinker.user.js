@@ -195,13 +195,13 @@
       for (let k = 1; k <= 7; k++) {
         let tops = [];
         const day_column = week.cells[k].childNodes[0];
-        if (day_column.childNodes.length != 0)
+        if (day_column.childNodes.length != 0) {
           for (let index = 0; index < day_column.childNodes.length; index++) {
             if (tops.includes(day_column.childNodes[index].style.top)) {
               day_column.childNodes[index].style.backgroundColor = "red";
               day_column.childNodes[index].childNodes[2].style.backgroundColor =
                 "red";
-              for (let l = 0; k <= day_column.childNodes.length; k++) {
+              for (let l = 0; l <= index; l++) {
                 if (
                   day_column.childNodes[index].style.top ==
                   day_column.childNodes[l].style.top
@@ -214,6 +214,8 @@
             }
             tops.push(day_column.childNodes[index].style.top);
           }
+        }
+        console.log(tops)
       }
     },
 
