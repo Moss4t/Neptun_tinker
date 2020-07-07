@@ -45,6 +45,8 @@
                     const id = element.parentElement.parentElement.id;
                     document.getElementById(id).classList.remove("Row1_Bold");
                     document.getElementById(id).style.backgroundColor = "#00FF00";
+                    
+
                     console.log("Jegy!");
                 }
                 else if (element.innerHTML.includes("Új vizsgakiírás")){
@@ -59,6 +61,8 @@
                 }
             }
             this.initKeepSession();
+            this.newMenus();
+            this.hideHeader();
         },
 
         initKeepSession: function() {
@@ -91,6 +95,49 @@
                 $("#upTraining_lblRemainingTime").html('<span id="npuStatus" style="font-weight: normal">Neptun Tinker</span>');
               }
             }, 1000);
+          },
+
+          hideHeader: function() {
+            $("#panHeader, #panCloseHeader").hide();
+            $("table.top_menu_wrapper").css("margin-top", "5px").css("margin-bottom", "8px");
+            $("#form1 > fieldset").css("border", "0 none");
+            $("#span_changeproject").parent().hide();
+          },
+    
+
+          hideFilter: function() {
+            $("#function_tableheader, #upFilter").hide();
+            $("table.top_menu_wrapper").css("margin-top", "5px").css("margin-bottom", "8px");
+            $("#form1 > fieldset").css("border", "0 none");
+            $("#span_changeproject").parent().hide();
+          },
+
+          newMenus: function(){
+            var orarend = $('<li aria-haspopup="false" tabindex="0" role="menuitem" class="menu-parent has-target" id="mb1_Orarend" targeturl="main.aspx?ctrl=0203&amp;ismenuclick=true">Órarend</li>');
+            $("#mb1_Targyak").before(orarend);
+            $("#mb1_Tanulmanyok_Órarend").remove();
+    
+            if(!$("#upChooser_chooser_kollab").hasClass("KollabChooserSelected")) {
+              $('<li aria-haspopup="false" tabindex="0" role="menuitem" class="menu-parent has-target" id="mb1_MeetStreet" targeturl="javascript:__doPostBack(\'upChooser$btnKollab\',\'\')">Meet Street</li>').appendTo("#mb1");
+            }
+            if(!$("#upChooser_chooser_neptun").hasClass("NeptunChooserSelected")) {
+              $('<li aria-haspopup="false" tabindex="0" role="menuitem" class="menu-parent has-target" id="mb1_TanulmanyiRendszer" targeturl="javascript:__doPostBack(\'upChooser$btnNeptun\',\'\')">Neptun</li>').appendTo("#mb1");
+            }
+
+            $("#mb1 li[targeturl]").css("position", "relative").each(function() {
+              $(this).addClass("has-target");
+              var a = $('<a href="' + $(this).attr("targeturl") + '" style="display: block; position: absolute; left: 0; top: 0; width: 100%; height: 100%"></a>');
+              a.click(function(e) {
+                $("ul.menu").css("visibility", "hidden");
+                e.stopPropagation();
+              });
+              var hoverid = $(this).attr("hoverid");
+              if(hoverid) {
+                a.hover(function() { $(hoverid).addClass("menu-hover"); }, function() { $(hoverid).removeClass("menu-hover"); });
+              }
+              $(this).append(a);
+    
+            });
           },
 
           runEval: function(source) {
