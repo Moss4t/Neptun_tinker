@@ -25,19 +25,21 @@
 // ==/UserScript==
 
 (function() {
-    "use strict";
-
-    var nep = {
-        init: async function() {
-
-            var i;
-            var max_num = document.getElementById("c_messages_gridMessages_ddlPageSize").value;
-            for (i = 0; i < max_num; i++) {
-
-                const element = document.getElementsByClassName("link")[i];
-
-                if(element.innerHTML == "Kurzus órarendi változás" || element.innerHTML.toUpperCase().includes("EMLÉKEZTETŐ") || element.innerHTML.toUpperCase().includes("ERASMUS")
-                   || element.innerHTML.toUpperCase().includes("SPORT") || element.innerHTML.toUpperCase().includes("ANGOL") || element.innerHTML.toUpperCase().includes("ÉRTESÍTÉS")){
+  "use strict";
+  
+  var nep = {
+    init: async function() {
+      
+      this.moreMessages();
+      
+      var i;
+      var max_num = document.getElementById("c_messages_gridMessages_ddlPageSize").value;
+      for (i = 0; i < max_num; i++) {
+        
+        const element = document.getElementsByClassName("link")[i];
+        
+        if(element.innerHTML == "Kurzus órarendi változás" || element.innerHTML.toUpperCase().includes("EMLÉKEZTETŐ") || element.innerHTML.toUpperCase().includes("ERASMUS")
+        || element.innerHTML.toUpperCase().includes("SPORT") || element.innerHTML.toUpperCase().includes("ANGOL") || element.innerHTML.toUpperCase().includes("ÉRTESÍTÉS")){
                     const id = element.parentElement.parentElement.id;
                     document.getElementById(id).style.display = 'none';
                 }
@@ -85,12 +87,12 @@
                   row.cells[7].textContent = newText;
                 }
             }
-
-            
+      
             this.initKeepSession();
             this.newMenus();
             this.hideHeader();
             this.hideFilter();
+            
         },
 
         initKeepSession: function() {
@@ -168,6 +170,24 @@
             });
           },
 
+          moreMessages: function() {
+            window.setInterval(function() {
+              var pageSelect = $(".grid_pagerpanel select");
+              pageSelect.each(function() {
+                var e = $(this);
+                e.hide();
+                $(".link_pagesize", e.closest("tr")).html("");
+                if(e.attr("data-listing") != "1" && e.val() != "500") {
+                  e.attr("data-listing", "1").val("500");
+                  var onChange = this.getAttributeNode("onchange");
+                  if(onChange) {
+                    npu.runEval(onChange.value);
+                  }
+                }
+              });
+            }, 100);
+          },
+
           runEval: function(source) {
             if ("function" == typeof source) {
               source = "(" + source + ")();"
@@ -177,6 +197,10 @@
             script.textContent = source;
             document.body.appendChild(script);
             document.body.removeChild(script);
+          },
+
+          runAsync: function(func) {
+            window.setTimeout(func, 0);
           },
 
           getChild: function(o, s) {
@@ -189,7 +213,7 @@
             }
             return o;
           },
-
+    
           setChild: function(o, s, v) {
             while(s.length) {
               var n = s.shift();
@@ -209,5 +233,6 @@
             }
           },
     }
+    
     nep.init();
   })();
