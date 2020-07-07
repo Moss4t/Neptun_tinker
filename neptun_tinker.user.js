@@ -30,13 +30,16 @@
 
   var nep = {
     init: async function () {
+
+      // call function after timetable finished loading
+      setTimeout(this.courseCollison, 2500);
+
       this.initKeepSession();
       this.newMenus();
       this.hideHeader();
       this.hideFilter();
 
-      // call function after timetable finished loading
-      setTimeout(this.courseCollison, 2500);
+      
 
       var i;
       var max_num = document.getElementById(
@@ -174,7 +177,7 @@
               day_column.childNodes[index].style.backgroundColor = "red";
               day_column.childNodes[index].childNodes[2].style.backgroundColor =
                 "red";
-              for (let l = 0; k <= index; k++) {
+              for (let l = 0; k <= day_column.childNodes.length; k++) {
                 if (
                   day_column.childNodes[index].style.top ==
                   day_column.childNodes[l].style.top
