@@ -63,6 +63,7 @@
             this.initKeepSession();
             this.newMenus();
             this.hideHeader();
+            this.hideFilter();
         },
 
         initKeepSession: function() {
