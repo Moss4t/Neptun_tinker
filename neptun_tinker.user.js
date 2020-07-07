@@ -96,9 +96,6 @@
                         document.getElementById(id).style.backgroundColor = "#FFED6B";
                     }else{
 
-                        document.getElementById(id).style.backgroundColor = "#F9DD31";
-                        console.log(document.getElementById(id).children[6].children[0]);
-                       //document.getElementById(id).children[6].children[0].classList.remove("link");
                         document.getElementById(id).style.backgroundColor = "#3160F9";
                         console.log(document.getElementById(id).children[6].children[0]);
                        // document.getElementById(id).children[6].children[0].classList.remove("link");
