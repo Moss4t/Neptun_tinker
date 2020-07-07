@@ -141,6 +141,12 @@
               if (tops.includes(week.cells[k].childNodes[0].childNodes[index].style.top)) {
                 week.cells[k].childNodes[0].childNodes[index].style.backgroundColor = "red";
                 week.cells[k].childNodes[0].childNodes[index].childNodes[2].style.backgroundColor = "red";
+                for (let l = 0; k <= index; k++) {
+                  if (week.cells[k].childNodes[0].childNodes[index].style.top == week.cells[k].childNodes[0].childNodes[l].style.top) {
+                    week.cells[k].childNodes[0].childNodes[l].style.backgroundColor = "red";
+                    week.cells[k].childNodes[0].childNodes[l].childNodes[2].style.backgroundColor = "red";
+                  }
+                }
               }
               tops.push(week.cells[k].childNodes[0].childNodes[index].style.top)
             }
