@@ -170,24 +170,24 @@
             });
           },
 
-          //moreMessages: function() {
-          //  window.setInterval(function() {
-          //    var pageSelect = $(".grid_pagerpanel select");
-          //    pageSelect.each(function() {
-          //      var e = $(this);
-          //      e.hide();
-          //      $(".link_pagesize", e.closest("tr")).html("");
-          //      if(e.attr("data-listing") != "1" && e.val() != "500") {
-          //        e.attr("data-listing", "1").val("500");
-          //        var onChange = this.getAttributeNode("onchange");
-          //        if(onChange) {
-          //          nep.runEval(onChange.value);
-          //        }
-          //      }
-          //    });
-          //  }, 100);
-          //},
-
+          /*moreMessages: function() {
+            window.setInterval(function() {
+              var pageSelect = $(".grid_pagerpanel select");
+              pageSelect.each(function() {
+                var e = $(this);
+                e.hide();
+                $(".link_pagesize", e.closest("tr")).html("");
+                if(e.attr("data-listing") != "1" && e.val() != "500") {
+                  e.attr("data-listing", "1").val("500");
+                  var onChange = this.getAttributeNode("onchange");
+                  if(onChange) {
+                    nep.runEval(onChange.value);
+                  }
+                }
+              });
+            }, 100);
+          },
+          */
           runEval: function(source) {
             if ("function" == typeof source) {
               source = "(" + source + ")();"
