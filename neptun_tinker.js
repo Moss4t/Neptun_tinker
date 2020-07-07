@@ -122,7 +122,7 @@
                 sessionEndDate = null;
               });
               if($("#npuStatus").size() == 0) {
-                $("#upTraining_lblRemainingTime").html('<span id="npuStatus" style="font-weight: normal">Neptun Tinker</span>');
+                $("#upTraining_lblRemainingTime").html('<span style="font-weight: bold">Neptun Tinker</span>');
               }
             }, 1000);
           },
