@@ -29,9 +29,9 @@
 
   var nep = {
     init: async function() {
-
+      
       //this.moreMessages();
-
+      
       var i;
       var max_num = document.getElementById("c_messages_gridMessages_ddlPageSize").value;
       for (i = 0; i < max_num; i++) {
@@ -75,15 +75,15 @@
                 let now = Date.now();
                 let newText;
                 if (Math.floor((now - newDate) / (1000*60*60)) < 1) {
-                  newText = Math.floor(Math.floor(now - newDate) / (1000*60)) + " perce küldve";
+                  newText = Math.floor(Math.floor(now - newDate) / (1000*60)) + " perce";
                 }
                 else if (Math.floor((now - newDate) / (1000*60*60*24)) < 1){
-                  newText = Math.floor(Math.floor(now - newDate) / (1000*60*60)) + " órája küldve";
+                  newText = Math.floor(Math.floor(now - newDate) / (1000*60*60)) + " órája";
                 }
                 else if (Math.floor((now - newDate) / (1000*60*60*24)) < 365) {
-                  newText = Math.floor(Math.floor(now - newDate) / (1000*60*60*24)) + " napja küldve";
+                  newText = Math.floor(Math.floor(now - newDate) / (1000*60*60*24)) + " napja";
                 } else {
-                  newText = Math.floor(Math.floor(now - newDate) / (1000*60*60*24*365)) + " éve küldve";
+                  newText = Math.floor(Math.floor(now - newDate) / (1000*60*60*24*365)) + " éve";
                 }
                 if (newText != null) {
                   row.cells[7].textContent = newText;
@@ -172,23 +172,23 @@
             });
           },
 
-          //moreMessages: function() {
-          //  window.setInterval(function() {
-          //    var pageSelect = $(".grid_pagerpanel select");
-          //    pageSelect.each(function() {
-          //      var e = $(this);
-          //      e.hide();
-          //      $(".link_pagesize", e.closest("tr")).html("");
-          //      if(e.attr("data-listing") != "1" && e.val() != "500") {
-          //        e.attr("data-listing", "1").val("500");
-          //        var onChange = this.getAttributeNode("onchange");
-          //        if(onChange) {
-          //          nep.runEval(onChange.value);
-          //        }
-          //      }
-          //    });
-          //  }, 100);
-          //},
+          /*moreMessages: function() {
+            window.setInterval(function() {
+              var pageSelect = $(".grid_pagerpanel select");
+              pageSelect.each(function() {
+                var e = $(this);
+                e.hide();
+                $(".link_pagesize", e.closest("tr")).html("");
+                if(e.attr("data-listing") != "1" && e.val() != "500") {
+                  e.attr("data-listing", "1").val("500");
+                  var onChange = this.getAttributeNode("onchange");
+                  if(onChange) {
+                    nep.runEval(onChange.value);
+                  }
+                }
+              });
+            }, 100);
+          },*/
 
           runEval: function(source) {
             if ("function" == typeof source) {
