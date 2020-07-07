@@ -26,18 +26,18 @@
 
 (function() {
   "use strict";
-  
+
   var nep = {
     init: async function() {
-      
+
       //this.moreMessages();
-      
+
       var i;
       var max_num = document.getElementById("c_messages_gridMessages_ddlPageSize").value;
       for (i = 0; i < max_num; i++) {
-        
+
         const element = document.getElementsByClassName("link")[i];
-        
+
         if(element.innerHTML == "Kurzus órarendi változás" || element.innerHTML.toUpperCase().includes("EMLÉKEZTETŐ") || element.innerHTML.toUpperCase().includes("ERASMUS")
         || element.innerHTML.toUpperCase().includes("SPORT") || element.innerHTML.toUpperCase().includes("ANGOL") || element.innerHTML.toUpperCase().includes("ÉRTESÍTÉS")){
                     const id = element.parentElement.parentElement.id;
@@ -47,7 +47,7 @@
                     const id = element.parentElement.parentElement.id;
                     document.getElementById(id).classList.remove("Row1_Bold");
                     document.getElementById(id).style.backgroundColor = "#00FF00";
-                    
+
 
                     console.log("Jegy!");
                 }
@@ -55,6 +55,8 @@
                     const id = element.parentElement.parentElement.id;
                     document.getElementById(id).classList.remove("Row1_Bold");
                     document.getElementById(id).style.backgroundColor = "#1E90FF";
+                     document.getElementById(id).style.color = "white";
+                    document.getElementById(id).children[6].children[0].classList.remove("link");
                 }
                 else if (element.innerHTML.toUpperCase().includes("ÖSZTÖNDÍJ")){
                     const id = element.parentElement.parentElement.id;
@@ -87,12 +89,12 @@
                   row.cells[7].textContent = newText;
                 }
             }
-      
+
             this.initKeepSession();
             this.newMenus();
             this.hideHeader();
             this.hideFilter();
-            
+
         },
 
         initKeepSession: function() {
@@ -133,7 +135,7 @@
             $("#form1 > fieldset").css("border", "0 none");
             $("#span_changeproject").parent().hide();
           },
-    
+
 
           hideFilter: function() {
             $("#function_tableheader, #upFilter").hide();
@@ -146,7 +148,7 @@
             var orarend = $('<li aria-haspopup="false" tabindex="0" role="menuitem" class="menu-parent has-target" id="mb1_Orarend" targeturl="main.aspx?ctrl=0203&amp;ismenuclick=true">Órarend</li>');
             $("#mb1_Targyak").before(orarend);
             $("#mb1_Tanulmanyok_Órarend").remove();
-    
+
             if(!$("#upChooser_chooser_kollab").hasClass("KollabChooserSelected")) {
               $('<li aria-haspopup="false" tabindex="0" role="menuitem" class="menu-parent has-target" id="mb1_MeetStreet" targeturl="javascript:__doPostBack(\'upChooser$btnKollab\',\'\')">Meet Street</li>').appendTo("#mb1");
             }
@@ -166,7 +168,7 @@
                 a.hover(function() { $(hoverid).addClass("menu-hover"); }, function() { $(hoverid).removeClass("menu-hover"); });
               }
               $(this).append(a);
-    
+
             });
           },
 
@@ -213,7 +215,7 @@
             }
             return o;
           },
-    
+
           setChild: function(o, s, v) {
             while(s.length) {
               var n = s.shift();
@@ -232,7 +234,7 @@
               o = o[n];
             }
           },
-    
+
     fixOfficialMessagePopup: function() {
         var dismiss = function() {
           $("[aria-describedby=upRequiredMessageReader_upmodal_RequiredMessageReader_divpopup] .ui-dialog-content").dialog("close");
@@ -254,7 +256,7 @@
           }
         }, 200);
       },
-    
-    } 
+
+    }
     nep.init();
   })();
