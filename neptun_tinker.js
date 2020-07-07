@@ -46,20 +46,41 @@
                 else if (element.innerHTML.includes("jegybeírás történt") || element.innerHTML.includes("vizsgajegy került beírásra")){
                     const id = element.parentElement.parentElement.id;
                     document.getElementById(id).classList.remove("Row1_Bold");
-                    document.getElementById(id).style.backgroundColor = "#00FF00";
+                    if(document.getElementById(id).children[5].children[0].alt == "Elolvasott üzenet"){
+                        document.getElementById(id).style.backgroundColor = "#00FF00";
+                    }else{
+                        document.getElementById(id).style.backgroundColor = "#40D043";
+                        document.getElementById(id).style.color = "white";
+                        console.log(document.getElementById(id).children[6].children[0]);
+                       // document.getElementById(id).children[6].children[0].classList.remove("link");
+                    }
 
 
                     console.log("Jegy!");
                 }
                 else if (element.innerHTML.includes("Új vizsgakiírás")){
                     const id = element.parentElement.parentElement.id;
-                    document.getElementById(id).classList.remove("Row1_Bold");
-                    document.getElementById(id).style.backgroundColor = "#1E90FF";
+                     document.getElementById(id).classList.remove("Row1_Bold");
+                     document.getElementById(id).style.color = "white";
+                    if(document.getElementById(id).children[5].children[0].alt == "Elolvasott üzenet"){
+                        document.getElementById(id).style.backgroundColor = "#6F9EFF";
+                    }else{
+                        document.getElementById(id).style.backgroundColor = "#3160F9";
+                        console.log(document.getElementById(id).children[6].children[0]);
+                       // document.getElementById(id).children[6].children[0].classList.remove("link");
+                    }
                 }
                 else if (element.innerHTML.toUpperCase().includes("ÖSZTÖNDÍJ")){
                     const id = element.parentElement.parentElement.id;
                     document.getElementById(id).classList.remove("Row1_Bold");
-                    document.getElementById(id).style.backgroundColor = "#FFD700";
+                     if(document.getElementById(id).children[5].children[0].alt == "Elolvasott üzenet"){
+                        document.getElementById(id).style.backgroundColor = "#FFED6B";
+                    }else{
+                        document.getElementById(id).style.backgroundColor = "#3160F9";
+                        console.log(document.getElementById(id).children[6].children[0]);
+                       // document.getElementById(id).children[6].children[0].classList.remove("link");
+                    }
+
                 }
             }
 
@@ -170,7 +191,7 @@
             });
           },
 
-          /*moreMessages: function() {
+         /*moreMessages: function() {
             window.setInterval(function() {
               var pageSelect = $(".grid_pagerpanel select");
               pageSelect.each(function() {
@@ -188,6 +209,7 @@
             }, 100);
           },
           */
+
           runEval: function(source) {
             if ("function" == typeof source) {
               source = "(" + source + ")();"
