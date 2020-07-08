@@ -442,21 +442,25 @@
        background: #111111;
   }span, #upTraining,#upMenuCaption_menucaption, #mb1_Sajatadatok, #mb1_Tanulmanyok,
    #mb1_Orarend, #mb1_Targyak, #mb1_Vizsgak, #mb1_Penzugyek, #mb1_Informacio,
-   #mb1_Ügyintezes, #mb1_MeetStreet, .tableRowName, .tableRowData, #lnkHelp,
-   #lnkFunctionHelp, #hlSiteMap, #dtbBaseData_lblTitleRight,#ctl00_lblTitleRight,
-   .caption, ul, li{
-         color: #FFFFFF;
+   #mb1_Ügyintezes,#mb1_MeetStreet, .tableRowName, .tableRowData,#lnkHelp,
+   #lnkFunctionHelp,#hlSiteMap, #dtbBaseData_lblTitleRight,#ctl00_lblTitleRight,
+   .caption, ul, li, #calendar_calendar tbody tr td,divCalendar,.FunctionCommandTitle,
+   .link_pagesize,.grid_RowCount{
+       color: #FFFFFF;
   }.FunctionHeaderItem, .FunctionHeaderTitle, .FunctionHeaderRightCorner,
    .FunctionHeaderLeftCorner,.footer_left,.footer_mid, .footer_menu,.footer_sda_logo,
    .footer_right{
        background: #111111;
    }.top_menu_mid, .top_menu_left, .top_menu_right, ul,li, .GadgetHeaderPanelTitle,
     .HeaderLeftCorner, .GadgetHeaderPanelButtonLeftMenu,.HeaderRightCorner,
-    .FunctionHeaderLeftCorner, .FunctionHeader, .FunctionHeaderRightCorner{
+    .FunctionHeaderLeftCorner, .FunctionHeader, .FunctionHeaderRightCorner,
+    .grid_pagerrow_left, .grid_topfunctionpanel,.grid_pagerpanel, .grid_pagerrow_right,
+    .header, #head_chk, #head_SendDate,.grid_footerleftcorner, .grid_RowCount,
+    .grid_bottomfunctionpanel, .grid_footerrightcorner{
        background: #1E2B33;
    }`;
    let s = document.createElement('style');
    s.type = 'text/css';
    s.innerHTML = stylesheet;
    (document.head || document.documentElement).appendChild(s);
-})();
+ })();
